@@ -1,0 +1,35 @@
+git config --global user.name bokul
+git config --global user.name
+git config --global user.email
+git config --global user.youtemail@gmail.com
+ls -lart (hidden file)
+git init (initialize)
+git status
+git add . (stage)
+git reset (untrack)
+git commit -m "your message" (git comment/message)
+git checkout -f (forget deleting file)
+git log (work details)
+git log -p -1 (last commit change show (q))
+git diff --staged (stage change show)
+git reset --hard (reset hard)
+git rm filename.text (file remove)
+it rm file.txt -f (force remove)
+
+brnach
+-------
+git branch (show branch)
+git checkout -b branchname (create branch and switch branch)
+git checkout branchname  (switch branch)
+git merge branchname (mearge code)
+git push -u origin master
+git remote -v
+
+
+.gitignore (
+app.js
+img/
+css/boostrap.css
+*.jpg
+*.png
+)

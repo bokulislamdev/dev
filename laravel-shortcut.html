@@ -1,0 +1,399 @@
+<!-- for success message -->
+@if(session('success_statue'))
+<div class="alert alert-danger">
+    {{ session('success_statue') }}
+</div>
+@endif
+<!-- validate error -->
+@error('catagery_name')
+<span class="text-danger">{{ $message }}</span>
+@enderror
+<!-- fot route system -->
+Route::group(['prefix'=>'tag','namespace'=>'Backend\News','middleware'=>['auth','admin']],function()
+{
+Route::get('index','TagController@index')->name('tag.index');
+Route::get('create','TagController@create')->name('tag.create');
+Route::post('store','TagController@store')->name('tag.store');
+Route::get('show/{id}','TagController@show')->name('tag.show');
+Route::get('edit/{id}','TagController@edit')->name('tag.edit');
+Route::post('update/{id}','TagController@update')->name('tag.update');
+Route::get('destroy/{id}','TagController@destroy')->name('tag.destroy');
+
+});
+
+
+<!-- crud -->
+public function index()
+{
+$blogs = Blog::latest()->get();
+return view('backend.website.blogs.index',compact('blogs'));
+}
+
+
+public function store(Request $request)
+{
+$request->validate([
+'title' => 'required',
+'description' => 'required',
+'status' => 'required',
+]);
+
+
+<!-- update -->
+$blogs = Blog::find($id);
+<!-- update -->
+$blogs = new Blog();
+$blogs->title = $request->title;
+$blogs->slug = Str::slug($request->title,'-');
+
+
+$image = $request->image;
+if($image){
+// @unlink($blogs->image);
+$uniqname = uniqid();
+$ext = strtolower($image->getClientOriginalExtension());
+$filepath = 'public/images/blogs/';
+$imagename = $filepath.$uniqname.'.'.$ext;
+$image->move($filepath,$imagename);
+$blogs->image = $imagename;
+}
+
+$blogs->description = $request->description;
+$blogs->status = $request->status;
+
+<--uniq id--!>
+$lastusercount = Withdraw::count();
+if($lastusercount>0){
+    $data->uid   = $lastuserid->uid+1;
+            }
+            else{
+                $data->uid   = '1001';
+            }
+            
+            
+            
+             if($agencyjobcount > 0){
+            $input['uid']   = $lastuserid->uid+1;
+        }
+        else{
+            $input['uid']   = '1001';
+        }
+       
+
+
+
+$blogs->save();
+
+$notification = array(
+'messag
+e' => 'Blog Create Successfully!',
+'alert-type' => 'success'
+);
+
+return redirect()->route('blog.index')->with($notification);
+}
+
+
+public function edit($id)
+{
+$data['blog'] = Blog::find($id);
+return view('backend.website.blogs.edit',$data);
+}
+
+
+<!-- delate -->
+public function destroy($id)
+{
+
+$blogs = Blog::find($id)->delete();
+
+$notification = array(
+'message' => 'Blog Delete Successfully!',
+'alert-type' => 'success'
+);
+
+return redirect()->route('blog.index')->with($notification);
+}
+
+
+<!-- status rouls -->
+<td>
+    @if($blog->status==1)
+    <p class="btn btn-primary">Active</p>
+    @elseif($blog->status==2)
+    <p class="btn btn-danger">inactive</p>
+    @endif
+</td>
+
+
+<div class="form-group">
+    <label for="description">status</label>
+    <select name="status" id="" class="form-control">
+        <option {{ $blog->status==1 ? 'selected' : ''}} value="1">active</option>
+        <option {{ $blog->status==2 ? 'selected' : '' }} value="2">inactive</option>
+    </select>
+</div>
+
+
+
+<!-- joining show -->
+
+<!-- model -->
+public function user()
+{
+return $this->belongsTo(User::class,'user_id');
+}
+<td>{{ $notice->user ? $notice->user->name:'no user'  }}</td>
+
+
+
+<!-- select loop -->
+<select name="category_id" id="" class="form-control">
+    <option value="">select catagory</option>
+    @foreach($categories as $catagory)
+    <option value="{{ $catagory->id }}"> {{ $catagory->name }}</option>
+    @endforeach
+</select>
+
+<!--join table show -->
+@foreach($board_questions as $board_question)
+<option {{$old_qus->board_question_type_id == $board_question->id ? 'selected' : '' }} value="{{$board_question->id}}">{{$board_question->name}}</option>
+@endforeach
+
+<!-- protected table-->
+protected $table = "medical_tourism_categories";
+
+
+
+<!--for ssl certificates laravel htaccess-->
+
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://main.hrlogisticsbd.com/$1 [R,L]
+
+
+
+
+<!--create artisan route-->
+Route::get('/clear', function() {
+$exitCode = Artisan::call('config:clear');
+$exitCode = Artisan::call('cache:clear');
+$exitCode = Artisan::call('config:cache');
+return 'DONE'; //Return anything
+});
+
+
+$data['blogs'] = Blog::latest()->limit(4)->get();
+
+$data->authar_id = Auth::user()->id;
+
+summernote
+
+
+
+<!--middleware-->
+if(Auth::check())
+{
+if(Auth::user()->role_id == 4){
+return $next($request);
+}else{
+return redirect()->route('login');
+}
+}else{
+return redirect()->route('login');
+}
+
+<!--login -->
+public function redirectTo(){
+
+$user = Auth::user();
+
+if($user->role_id == 1 || $user->role_id == 2 || $user->role_id == 3){
+return "/home";
+}else if($user->role_id == 4){
+return "/doctor-dashboard";
+}
+else if($user->role_id == 5){
+return "/medicalcenter-dashboard";
+}
+else if($user->role_id == 6){
+return "/hospital-dashboard";
+}
+else if($user->role_id == 7){
+return "/pharmacy-dashboard";
+}else{
+return "/error";
+}
+
+}
+
+
+
+
+<!--modal status change-->
+<!-- Modal -->
+
+<a href="#" class="btn btn-xs btn-aqua" data-toggle="modal" data-target="#exampleModal_{{$data->id}}">
+    <i class="fa fa-eye"></i> change status
+</a>
+
+<div class="modal fade" id="exampleModal_{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('change.update',$data->id)}}" method="post">
+                    @csrf
+                    <div>
+                        <label for="verify"><b>verify</b></label>
+                        <select name="is_verified" id="" class="form-control">
+                            <option value="1" selected>Panding</option>
+                            <option value="2" selected>Approved</option>
+                        </select>
+                    </div>
+                    <div class="pt-2 text-right">
+                        <button type="submit" class="btn btn-aqua">save change</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+$loop->iteration
+
+<option {{ old('instrument_brand_id') == $item->id ? 'seleted': '' }} value="{{ $item->id }}">{{ $item->name }}</option>
+
+
+
+
+
+<td>{{ $data->user?$data->user->code:'' }}</td>
+
+
+<span>{{ $errors->first('last_name') }}</span>
+
+
+<!---CRUD SHORTCUT-->
+
+protected  $guarded = [];
+
+public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'sheet_no'    => 'required',
+            'class_id'    => 'required',
+            'session_id'  => 'required',
+            'sheet_type_id'  => 'required',
+            'sheet_file'  => 'required',
+            'description'  => 'required',
+            'subject_id'  => 'required',
+            'status'      => 'required',
+        ]);
+
+        if ($validator->fails()){
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        $sheet = New Sheet();
+        $input               = $request->except('_token');
+        
+        $sheet_file          = $request->sheet_file;
+        if($sheet_file){
+            $uniqname   = uniqid();
+            $filenameoriginal = $sheet_file->getClientOriginalName();
+            $ext        = strtolower($sheet_file->getClientOriginalExtension());
+            $filepath   = 'public/uploads/sheets/';
+            $namedata   =  pathinfo($filenameoriginal, PATHINFO_FILENAME);
+
+            $imagename  = $filepath.$namedata."_".$uniqname.'.'.$ext;
+            $sheet_file->move($filepath,$imagename);
+            $input['sheet_file'] = $imagename;
+            
+            $input['thumbnail'] = 'public/uploads/sheets/no_image_sheet.png';
+        }
+
+        $input['created_by'] = Auth::user()->id;
+        $sheet->fill($input)->save();
+
+        
+
+        $notification = array(
+            'message' => 'Sheet Successfully Added!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('sheet.index')->with($notification);
+    }
+	
+	
+  {!!  $blog->description  !!}
+  
+  
+  <!--manu active-->
+ class="{{ '/' == request()->path()? 'active': '' }}"
+ 
+ 
+ <!--bd Transaction-->
+ DB::beginTransaction();
+
+ try{
+ 
+ 
+ DB::commit();
+    $notification = array(
+        'message' => 'Artist Registation Successfully !',
+        'alert-type' => 'success'
+        );
+        return redirect()->route('artist.registration')->with($notification);  
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+		
+		
+		
+		
+		
+		
+@if (app()->getLocale() == 'en')
+    <html lang="en" dir="auto">
+@elseif(app()->getLocale() == "ar")
+    <html lang="ar" dir="rtl">
+@endif
+
+step = '0.01'
+
+ <!--bd validation-->
+ 'file'=> 'required|mimes:xlsx, csv, xls',
+ 'email' => 'required|string|email|max:255|unique:users',
+ 'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+ 'mobile'=>'required|numeric|unique:users',
+ 'talent' => 'required|array|max:2',
+ 
+ 
+ 
+ 
+ 
+ session()->flash('message','Data submit successfully');
+ 
+ 
+ <!--design-->
+ .row{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.row::after{
+    content: '';
+    clear: both;
+    display: table;
+}
+ 
+ 
