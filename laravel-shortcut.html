@@ -332,6 +332,57 @@ public function store(Request $request)
         return redirect()->route('sheet.index')->with($notification);
     }
 	
+<!-- 	crud sofiul -->
+	    public function update(Request $request, $local, Property $property)
+    {
+
+        // $property = Property::find($id);
+        // $por = new Property;
+
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'property_type' => 'required',
+            'address_line_1' => 'required',
+            'address_line_2' => 'required',
+            'country_id' => 'required',
+            'state_id' => 'required',
+            'zip_code' => 'required',
+            'contact_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'status' => 'required',
+            'is_children_allowed' => 'required',
+            'is_pets_allowed' => 'required',
+            'is_smoking_allowed' => 'required',
+            'is_credit_card_required' => 'required',
+            'is_pre_payment_required' => 'required',
+            'short_description' => 'required',
+            'description' => 'required',
+        ]);
+
+        $property->update($request->except('default_photo', '_token'));
+
+        if ($request->hasFile('default_photo')) {
+            if($property->default_photo) {
+                unlink(public_path('uploads/properties/' . $property->default_photo));
+            }
+            // file save
+            $photo_name = time().'.'.$request->default_photo->extension();
+            $request->default_photo->move(public_path('uploads/properties/'), $photo_name);
+            // database save
+            $property->default_photo = $photo_name;
+            $property->save();
+        }
+        
+        $notification = array(
+            'message' => 'Property Created Successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('admin.property.index')->with($notification);
+    }
+<!-- 	crud end sofiul -->
+	
 	
   {!!  $blog->description  !!}
   
