@@ -23,6 +23,8 @@ git checkout -b branchname (create branch and switch branch)
 git checkout branchname  (switch branch)
 git merge branchname (mearge code)
 git push -u origin master
+git remote add origin linkformgithub
+git pull origin branchname
 git remote -v
 
 
