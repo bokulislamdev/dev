@@ -8,6 +8,14 @@
 @error('catagery_name')
 <span class="text-danger">{{ $message }}</span>
 @enderror
+
+<!-- show all errors -->
+@if($errors->any())
+    {{ implode('', $errors->all('<div>:message</div>')) }}
+@endif
+
+
+
 <!-- fot route system -->
 Route::group(['prefix'=>'tag','namespace'=>'Backend\News','middleware'=>['auth','admin']],function()
 {
