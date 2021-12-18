@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Status Change</title>
+</head>
+
+<body>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="show_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Product Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="show_data">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--    load page-->
+    <form action="{{route('change.update',$product->id)}}" method="post">
+        @csrf
+        <div>
+            <select name="status" id="status" class="form-control">
+                <option value="1" {{ $product->status == 1 ? 'selected' : ''}}>Panding</option>
+                <option value="2" {{ $product->status == 2 ? 'selected' : ''}}>Active</option>
+                <option value="3" {{ $product->status == 3 ? 'selected' : ''}}>Rejected</option>
+                <option value="0" {{ $product->status == 4 ? 'selected' : ''}}>Draft</option>
+
+            </select>
+        </div>
+        <div class="pt-2 text-right">
+            <button type="submit" class="btn btn-aqua">Update Status</button>
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+
+    <script>
+        $('.data_check').on('click', function(e) {
+            e.preventDefault();
+
+            var product_id = $(this).data('id');
+
+            $.ajax({
+                url: "{{route('change.status.model')}}",
+                data: {
+                    product_id: product_id
+                },
+                success: function(data) {
+                    $('#show_data').html(data);
+                    $('#show_modal').modal('show');
+                },
+                error: function(data) {
+                    console.log('error:', data);
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
