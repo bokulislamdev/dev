@@ -9,7 +9,13 @@
 <body>
 
 
-
+    <!--    Click button-->
+    <a href="#" class="btn btn-xs btn-primary data_check" data-id="{{$item->id}}">
+        Pending
+    </a>
+    
+    
+    
     <!-- Modal -->
     <div class="modal fade" id="show_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -31,7 +37,6 @@
     </div>
 
 
-
     <!--    load page-->
     <form action="{{route('change.update',$product->id)}}" method="post">
         @csrf
@@ -50,8 +55,7 @@
     </form>
 
 
-
-
+    
 
 
 
