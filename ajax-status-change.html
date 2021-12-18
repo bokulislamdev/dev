@@ -13,9 +13,9 @@
     <a href="#" class="btn btn-xs btn-primary data_check" data-id="{{$item->id}}">
         Pending
     </a>
-    
-    
-    
+
+
+
     <!-- Modal -->
     <div class="modal fade" id="show_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -55,7 +55,19 @@
     </form>
 
 
-    
+    <!--    for controller-->
+    <!--
+    public function productStatusModel(Request $request){
+        $product_id = $request->product_id;
+
+        $data['product'] = Product::find($product_id);
+
+        return view('backend.Admin.products.product-status',$data);
+        
+    }
+    -->
+
+
 
 
 
