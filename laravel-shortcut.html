@@ -457,8 +457,15 @@ step = '0.01'
 }
  
 	    
-	    {{$item->updated_at->diffForhumans()}}
+{{$item->updated_at->diffForhumans()}}
+
+//SUBSTR
+$blog_title = substr($item->title, 0, 28) . '...';
 	    
-	    $blog_title = substr($item->title, 0, 28) . '...';
+//PAGE RELOAD AND COUNT  
+Blog::where('slug',$slug)->increment('views');
+	    
+	    
+	    
 	    
  
