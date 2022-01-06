@@ -466,6 +466,11 @@ $blog_title = substr($item->title, 0, 28) . '...';
 Blog::where('slug',$slug)->increment('views');
 	    
 	    
+//RECOMMENDATED BLOG    
+$blog_single = Blog::where('slug',$slug)->first();
+$data['recommendate_blog'] = Blog::where('category_id', $blog_single->category_id)->where('id', '!=', $blog_single->id)->limit(2)->get();
+	    
+	    
 	    
 	    
  
