@@ -470,6 +470,19 @@ Blog::where('slug',$slug)->increment('views');
 $blog_single = Blog::where('slug',$slug)->first();
 $data['recommendate_blog'] = Blog::where('category_id', $blog_single->category_id)->where('id', '!=', $blog_single->id)->limit(2)->get();
 	    
+//IMAGE UPLOAD    
+$input = $request->except('_token', 'image');
+if ($request->hasFile('image')) {
+    if($data->image) {
+	unlink(public_path($data->image));
+    }
+    $photo_name = time().rand().'.'.$request->image->extension();
+    $request->image->move(public_path('uploads/product_categories/'), $photo_name);
+    $input['image'] = 'uploads/product_categories/'. $photo_name;
+}
+
+$data->fill($input)->save();
+	    
 	    
 	    
 	    
