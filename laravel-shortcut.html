@@ -484,6 +484,18 @@ if ($request->hasFile('image')) {
 $data->fill($input)->save();
 	    
 	    
+	    
+if ($request->hasFile('photo')) {
+    if($data->photo) {
+    unlink(public_path($data->photo));
+    }
+    $photo_name = time().rand().'.'.$request->photo->extension();
+    $path ='uploads/courses/'.$photo_name;
+    Image::make($request->file('photo'))->resize(330,200)->save(public_path($path), 50);
+    $input['photo'] = $path;
+}
+	    
+	    
 protected $fillable = ['first_name', 'last_name', 'email']; 
 	    
 	    
