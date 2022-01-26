@@ -494,6 +494,27 @@ if ($request->hasFile('photo')) {
     Image::make($request->file('photo'))->resize(330,200)->save(public_path($path), 50);
     $input['photo'] = $path;
 }
+
+<!-- IMAGE UPLOAD	     -->
+$data = new Slider();
+$input = $request->except('_token','image');
+if ($request->hasFile('image')) {
+    if($data->image) {
+    unlink(public_path($data->image));
+    }
+    $photo_name = time().rand().'.'.$request->image->extension();
+    $path = 'images/sliders/'.$photo_name;
+    Image::make($request->file('image'))->resize(1140,870)->save(public_path($path), 100);
+    $input['image'] = $path;
+}
+$data->fill($input)->save(); 
+
+<!-- IMAGE AND ROW DELETE -->
+$image_name = Slider::find($id);
+if($image_name->image) {
+unlink(public_path($image_name->image));
+}
+Slider::find($id)->delete();
 	    
 	    
 protected $fillable = ['first_name', 'last_name', 'email']; 
