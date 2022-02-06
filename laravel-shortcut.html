@@ -522,4 +522,15 @@ protected $fillable = ['first_name', 'last_name', 'email'];
 	    
 	    
 	    
+	    
+	    
+	    
+	    
+	    
+<IfModule mime_module>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URI} !^public
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+	    
  
