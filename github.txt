@@ -6,6 +6,7 @@ ls -lart (hidden file)
 git init (initialize)
 git status
 git add . (stage)
+git remote add origin https://github.com/bokulislamdev/asdf.git
 git reset (untrack)
 git commit -m "your message" (git comment/message)
 git checkout -f (forget deleting file)
