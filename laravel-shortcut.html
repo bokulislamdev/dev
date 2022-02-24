@@ -524,13 +524,18 @@ protected $fillable = ['first_name', 'last_name', 'email'];
 	    
 	    
 	    
-	    
-	    
 .htaccess	    
 <IfModule mime_module>
     RewriteEngine on
     RewriteCond %{REQUEST_URI} !^public
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
+	   
+	    
+	    
+	    
+<!-- for ajex -->
+data-id="{{ $item->id }}" class="product_id"
+	    
 	    
  
