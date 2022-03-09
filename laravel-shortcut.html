@@ -508,6 +508,37 @@ if ($request->hasFile('image')) {
     $input['image'] = $path;
 }
 $data->fill($input)->save(); 
+	    
+	    
+	    
+<!-- MULTIPLE IMAGE UPLOAD -->
+	    
+if ($request->hasFile('multi_image')) {
+$multiple_images = ProductMultiImage::where('product_id', $data->id)->get();
+// for delete
+foreach ($multiple_images as $multiple_image) {
+if ($multiple_image) {
+    $multiple_image->delete();
+}
+if ($multiple_image->multi_image) {
+    unlink($multiple_image->multi_image);
+}
+}
+// for create
+foreach ($request->multi_image as $image) {
+$photo_name = time().rand(1, 100).'.'.$image->extension();
+$path = 'uploads/products/'.$photo_name;
+Image::make($image)->resize(600,400)->save(public_path($path), 100);
+ProductMultiImage::create([
+    'product_id' => $data->id,
+    'multi_image' => $path,
+]);
+}
+}	    
+	    
+	    
+	    
+	    
 
 <!-- IMAGE AND ROW DELETE -->
 $image_name = Slider::find($id);
