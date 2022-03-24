@@ -1,0 +1,5 @@
+
+<--scroll and add css-->
+$(window).scroll(function() {
+     $('header').toggleClass('scrolled', $(this).fadeIn().scrollTop() > 65);
+});
