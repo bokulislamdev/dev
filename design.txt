@@ -1,8 +1,41 @@
-
+-------------------------------------------------
 <--scroll and add css-->
 $(window).scroll(function() {
      $('header').toggleClass('scrolled', $(this).fadeIn().scrollTop() > 65);
 });
+-----------------------------------------------
 
-
+--------------------------------------------
 background: url(images/my-image.png) no-repeat center center / cover;
+--------------------------------------------
+
+
+-------------------------------------------------
+	//js
+	$('.counter').each(function () {
+	    var $this = $(this),
+	        countTo = $this.attr('data-count');
+
+	    $({
+	        countNum: $this.text()
+	    }).animate({
+	            countNum: countTo
+	        },
+	        {
+	            duration: 6000,
+	            easing: 'linear',
+	            step: function () {
+	                $this.text(Math.floor(this.countNum));
+	            },
+	            complete: function () {
+	                $this.text(this.countNum);
+	            }
+	        });
+	});
+	//js end
+     
+      <h6>
+         <span class="counter" data-count="3500">3500+</span> 
+         <span>+</span>
+      </h6>
+     ---------------------------------------------------------------
