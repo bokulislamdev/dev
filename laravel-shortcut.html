@@ -435,6 +435,7 @@ step = '0.01'
  'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
  'mobile'=>'required|numeric|unique:users',
  'talent' => 'required|array|max:2',
+'image'  =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
  
  
 <!--  controller method -->
