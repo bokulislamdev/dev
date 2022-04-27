@@ -583,7 +583,8 @@ onclick="return confirm('Are you sure, Want to Delete this Item!')"
 {{ Carbon\Carbon::parse(date)->format('d-M-Y') }} => For blade.
 Saiful Islam
 Carbon::parse(date)->format('d-M-Y') => For controller.
- 
+ {{ \Carbon\Carbon::parse($non_profit_org->program_date)->diff(\Carbon\Carbon::now())->format('%m months %d days') }}
+{{ \Carbon\Carbon::parse($non_profit_org->program_date)->diff(\Carbon\Carbon::now())->format('%h : %i : %s') }}
 	    
 	    
 	    
