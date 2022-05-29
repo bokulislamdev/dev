@@ -617,3 +617,9 @@ Carbon::parse(date)->format('d-M-Y') => For controller.
         }
         
         $data['events'] = $query->latest()->where('is_published',1)->where('status','!=',0)->limit(24)->get();
+	    
+	    
+	    
+	    
+//database joining controller	    
+$data['boothbooks'] = auth()->user()->booth->pluck('bookBooth')->flatten();
