@@ -624,3 +624,54 @@ Carbon::parse(date)->format('d-M-Y') => For controller.
 //database joining controller	    
 $data['boothbooks'] = auth()->user()->booth->pluck('bookBooth')->flatten();
 	    whereIn,whereNotIn
+	    
+	    
+//ajax category subcategory
+	    <select id="event_type_id" onchange="getEventToptic()"></select>
+	        Route::get('/get/country', 'FrontendController@countryGet')->name('get.country');
+	    
+	    
+	 public function countryGet(Request $request){
+		if ($request->ajax()) {
+		    $counties = District::where('country_id',$request->id)->get();
+		    return $counties;
+		}
+    	}
+	    
+	    
+	    <script>
+    function getCountry() {
+
+        var country_id = $("#country_id").val()
+
+        
+        console.log(country_id)
+
+        if (country_id) {
+            $.ajax({
+                url: `{{ route('get.country') }}`,
+                data: {
+                    id: country_id
+                },
+                success: function(res) {
+                    // console.log(res)
+                    $("#district_push").empty()
+                    var options = '';
+                    $.each(res, function(index, row) {
+                        options += "<option value='" + row.id + "'>" + row.name + "</option>";
+                    })
+                    // console.log(options)
+                    $("#district_push").append(options);
+                },
+                error: function(e) {
+                    console.log(e);
+                    toastr.error('Something went wrong')
+                }
+            });
+
+            return;
+        }
+    }
+
+</script>   
+	    
