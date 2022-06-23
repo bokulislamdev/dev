@@ -39,3 +39,37 @@ background: url(images/my-image.png) no-repeat center center / cover;
          <span>+</span>
       </h6>
      ---------------------------------------------------------------
+     
+     ---------------------------------------------------------------
+     //PRODUCT SLIDER
+     
+	<div class="d-flex">
+	<div class="flex-shrink-1 shop-details-multiphoto images">
+	<div class="small-img">
+	    <img src="assets/img/products/1.png" onclick="showImg(this.src)" alt="Image">
+	</div>
+	<div class="small-img">
+	    <img src="assets/img/products/2.png" onclick="showImg(this.src)" alt="Image">
+	</div>
+	<div class="small-img">
+	    <img src="assets/img/products/3.png" onclick="showImg(this.src)" alt="Image">
+	</div>
+	<div class="small-img">
+	    <img src="assets/img/products/4.png" onclick="showImg(this.src)" alt="Image">
+	</div>
+	</div>
+	<div class="w-100 shop-details-main-photo big-img">
+	<img src="assets/img/products/2.png" alt="Image">
+	</div>
+	</div>
+	
+	
+	
+	<script>
+	let bigImg = document.querySelector('.big-img img');
+
+	function showImg(pic) {
+	    bigImg.src = pic;
+	}
+    	</script>
+     ---------------------------------------------------------------
