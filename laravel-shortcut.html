@@ -585,6 +585,8 @@ Saiful Islam
 Carbon::parse(date)->format('d-M-Y') => For controller.
  {{ \Carbon\Carbon::parse($non_profit_org->program_date)->diff(\Carbon\Carbon::now())->format('%m months %d days') }}
 {{ \Carbon\Carbon::parse($non_profit_org->program_date)->diff(\Carbon\Carbon::now())->format('%h : %i : %s') }}
+<!-- arabic	     -->
+ <span>{{ Carbon\Carbon::parse($event->date)->translatedFormat('l') }}, {{ Carbon\Carbon::parse($event->date)->translatedFormat('d M Y') }}</span>
 	    
 	    
 	    
