@@ -72,4 +72,11 @@ background: url(images/my-image.png) no-repeat center center / cover;
 	    bigImg.src = pic;
 	}
     	</script>
+
      ---------------------------------------------------------------
+     
+    // middle text for flex
+	display: flex;
+	align-items: center;
+	justify-content: center;
+ 	text-align: center;
