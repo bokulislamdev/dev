@@ -676,6 +676,34 @@ $data['boothbooks'] = auth()->user()->booth->pluck('bookBooth')->flatten();
     }
 
 </script>   
+	//or    
+    <script>
+
+        $(document).on('change', '#country_id', function(e)
+        {
+            getDistricts(this.value)
+        });
+
+        function getDistricts(country_id) {
+            $.ajax({
+                type: 'get',
+                url: `{{ route('get.country') }}`,
+                data: {
+                    country_id
+                },
+                success: function(data){
+                    var options = '';
+                    $.each(data, function(index, row) {
+                        options += "<option value='" + row.id + "'>" + row.name + "</option>";
+                    })
+                    $("#district_push").html(options);
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            })
+        }
+    </script>
 	   
 //alter ajex
 	<a href="javascript:void(0)" class="product_id" data-id="{{$product->id}}">click</a>
