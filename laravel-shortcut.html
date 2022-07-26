@@ -714,3 +714,39 @@ $data['boothbooks'] = auth()->user()->booth->pluck('bookBooth')->flatten();
 	  
 	});
 	    
+	    
+	    
+//sweet alert for delete
+<a class="dropdown-item" href="#" onclick="deleteItem({{ $item->id }})">
+<i data-feather="trash" class="me-50"></i>
+<span>Delete</span>
+</a>
+	    
+	    
+<form method="POST" id="deleteForm">
+    @csrf
+    @method('delete')
+</form>
+	    
+<script>
+    function deleteItem(id) {
+        let deleteRoute = `{!! request()->url()!!}/${id}`;
+        Swal.fire({
+            title: 'Are you sure?'
+            , text: "You won't be able to revert this!"
+            , icon: 'warning'
+            , showCancelButton: true
+            , confirmButtonText: 'Yes, delete it!'
+            , customClass: {
+                confirmButton: 'btn btn-primary'
+                , cancelButton: 'btn btn-outline-danger ms-1'
+            }
+            , buttonsStyling: false
+        }).then(function(result) {
+            console.log(result);
+            if (result.value) {
+                $('#deleteForm').attr('action', deleteRoute).submit();
+            }
+        });
+    }
+</script>
