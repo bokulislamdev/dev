@@ -750,3 +750,14 @@ $data['boothbooks'] = auth()->user()->booth->pluck('bookBooth')->flatten();
         });
     }
 </script>
+	    
+//cascade delete
+Schema::create('thanas', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->string('bn_name');
+    $table->unsignedBigInteger('district_id')->index();
+    $table->integer('status')->default(1);
+    $table->timestamps();
+    $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
+});
