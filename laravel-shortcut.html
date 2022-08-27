@@ -761,3 +761,32 @@ Schema::create('thanas', function (Blueprint $table) {
     $table->timestamps();
     $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
 });
+
+	    
+	    
+	    
+	    
+//language
+//SetLocale
+public function handle(Request $request, Closure $next)
+    {
+        if ($request->has('lang')) {
+            session(['lang' => $request->lang]);
+        }
+        $lang =  session('lang') ?? 'ar';
+        app()->setLocale($lang);
+        return $next($request);
+    }
+// karnel.php ->web
+\App\Http\Middleware\SetLocale::class
+	    
+//app.blade.php
+@php
+$locale = app()->getLocale();
+@endphp
+//lang button
+@if ($locale == 'en')
+<a  class="arabic-button" href="{{ request()->fullUrlWithQuery(['lang' => 'ar']) }}">Arabic</a>
+@elseif($locale == 'ar')
+<a  class="arabic-button" href="{{ request()->fullUrlWithQuery(['lang' => 'en']) }}">English</a>
+@endif
