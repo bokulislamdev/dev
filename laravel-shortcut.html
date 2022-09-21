@@ -790,3 +790,30 @@ $locale = app()->getLocale();
 @elseif($locale == 'ar')
 <a  class="arabic-button" href="{{ request()->fullUrlWithQuery(['lang' => 'en']) }}">English</a>
 @endif
+	    
+	    
+#change password    
+    public function adminChangePasswordPost(Request $request){
+        $request->validate([
+            'carrent_password' => 'required',
+            'new_password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'required',
+        ]);
+
+        if(!Hash::check($request->carrent_password, auth()->user()->password)){
+            $notification = array(
+                'message' => 'Carrent Password Doesn\'t match!',
+                'alert-type' => 'error'
+                );
+            return back()->with($notification);
+        }
+
+        $data = User::findOrFail(Auth::user()->id);
+        $data->password = bcrypt($request->new_password);
+        $data->save();
+        $notification = array(
+        'message' => 'Password Change Successfully !',
+        'alert-type' => 'success'
+        );
+        return redirect()->route('admin.profile.show')->with($notification);
+    }
