@@ -817,3 +817,8 @@ $locale = app()->getLocale();
         );
         return redirect()->route('admin.profile.show')->with($notification);
     }
+	    
+	    
+//email validation
+     'phone' => ['required','numeric'],
+    'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
