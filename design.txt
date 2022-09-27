@@ -80,3 +80,7 @@ background: url(images/my-image.png) no-repeat center center / cover;
 	align-items: center;
 	justify-content: center;
  	text-align: center;
+	
+//gradient border
+ border: 2px solid;
+  border-image: linear-gradient(119.89deg, #EB06FF 9.93%, #06D2FF 145.3%) 1;
