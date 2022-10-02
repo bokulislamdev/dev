@@ -84,3 +84,10 @@ background: url(images/my-image.png) no-repeat center center / cover;
 //gradient border
  border: 2px solid;
   border-image: linear-gradient(119.89deg, #EB06FF 9.93%, #06D2FF 145.3%) 1;
+  
+//gradient text
+
+  background: -webkit-linear-gradient(119.89deg, #EB06FF -12.22%, #06D2FF 145.3%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
