@@ -822,3 +822,18 @@ $locale = app()->getLocale();
 //email validation
      'phone' => ['required','numeric'],
     'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
+	    
+	    
+ $request->validate([
+            'name' => ['required', 'max:255', 'string'],
+            'service_type_id' => 'required',
+            'email' => 'required|email:dns',
+            'phone' => 'required|numeric|max_digits:15',
+            'established' => 'required|numeric|max_digits:4',
+            'owner' => ['required', 'string', 'max:255'],
+            'address' => ['required'],
+            'number_of_employes' => 'required|numeric',
+            'licence' => 'required|file|mimes:jpeg,png,jpg,doc,docx,pdf',
+            'attachment' => 'nullable|file|mimes:jpeg,png,jpg,doc,docx,pdf',
+            'avatar' => 'required|file|mimes:jpeg,png,jpg',
+        ]);
