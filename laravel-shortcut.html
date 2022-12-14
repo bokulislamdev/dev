@@ -828,7 +828,7 @@ $locale = app()->getLocale();
  $request->validate([
             'name' => ['required', 'max:255', 'string'],
             'service_type_id' => 'required',
-            'email' => 'required|email:dns',
+            'email' => 'required|email:rfc,dns,
             'phone' => 'required|numeric|max_digits:15',
             'established' => 'required|numeric|max_digits:4',
             'owner' => ['required', 'string', 'max:255'],
