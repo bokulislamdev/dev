@@ -552,8 +552,13 @@ Slider::find($id)->delete();
 protected $fillable = ['first_name', 'last_name', 'email']; 
 	    
 	    
-	    
-	    
+//checkbox     
+foreach($input['employment'] as $key => $value){
+EmploymentByServiceRequest::create([
+    'service_request_id' => $data->id,
+    'employment_id' => $input['employment'][$key]
+]);
+}
 	    
 	    
 .htaccess	    
