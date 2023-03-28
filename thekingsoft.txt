@@ -23,3 +23,6 @@ file path: providers/AppServiceProvider.php
         $viewShare['emptyMessage'] = 'Data not found';
         view()->share($viewShare);
  }
+ 
+ //nested join
+ with('currencies','currencies.method')
