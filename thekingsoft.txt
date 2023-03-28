@@ -1,0 +1,16 @@
+//for global load
+filepath: composer.json
+ "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/Http/Helpers/helpers.php"
+        ]
+    },
+
+
+//methods
+hash_hmac(),
