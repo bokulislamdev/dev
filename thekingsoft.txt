@@ -16,7 +16,7 @@ filepath: composer.json
 hash_hmac(),
 
 //for view share
-
+file path: providers/AppServiceProvider.php
  public function boot()
     {
         $viewShare['language'] = Language::all();
