@@ -26,3 +26,9 @@ file path: providers/AppServiceProvider.php
  
  //nested join
  with('currencies','currencies.method')
+ 
+ //model return type
+  protected $casts = [
+        'code' => 'string',
+        'extra' => 'object',
+    ];
