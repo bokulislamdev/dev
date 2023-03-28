@@ -14,3 +14,12 @@ filepath: composer.json
 
 //methods
 hash_hmac(),
+
+//for view share
+
+ public function boot()
+    {
+        $viewShare['language'] = Language::all();
+        $viewShare['emptyMessage'] = 'Data not found';
+        view()->share($viewShare);
+ }
