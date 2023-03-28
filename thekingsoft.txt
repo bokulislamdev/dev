@@ -13,7 +13,7 @@ filepath: composer.json
 
 
 //methods
-hash_hmac(),explode(',',$variable)
+hash_hmac(),scopefunction(),explode(',',$variable)
 
 //for view share
 file path: providers/AppServiceProvider.php
