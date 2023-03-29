@@ -35,3 +35,54 @@ file path: providers/AppServiceProvider.php
         'code' => 'string',
         'extra' => 'object',
     ];
+    
+    
+    //for modal
+    
+     <button class="btn btn-outline--success ms-1 approveBtn" data-id="{{ $withdrawal->id }}" data-amount="{{ showAmount($withdrawal->final_amount) }} {{$withdrawal->currency}}"><i class="fas la-check"></i> @lang('Approve')</button>
+     
+     
+         <div id="approveModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@lang('Approve Withdrawal Confirmation')</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="las la-times"></i>
+                    </button>
+                </div>
+                <form action="{{ route('admin.withdraw.approve') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="id">
+                    <div class="modal-body">
+                        <p>@lang('Have you sent') <span class="fw-bold withdraw-amount text-success"></span>?</p>
+                        <p class="withdraw-detail"></p>
+                        <textarea name="details" class="form-control pt-3" value="{{ old('details') }}" rows="3" placeholder="@lang('Provide the details. eg: transaction number')" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn--primary w-100 h-45">@lang('Submit')</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     
+     
+    <script>
+        (function ($) {
+            "use strict";
+            $('.approveBtn').on('click', function() {
+                var modal = $('#approveModal');
+                modal.find('input[name=id]').val($(this).data('id'));
+                modal.find('.withdraw-amount').text($(this).data('amount'));
+                modal.modal('show');
+            });
+
+            $('.rejectBtn').on('click', function() {
+                var modal = $('#rejectModal');
+                modal.find('input[name=id]').val($(this).data('id'));
+                modal.modal('show');
+            });
+        })(jQuery);
+
+    </script>
