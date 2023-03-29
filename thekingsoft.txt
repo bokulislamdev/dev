@@ -80,3 +80,7 @@ file path: providers/AppServiceProvider.php
         })(jQuery);
 
     </script>
+    
+    
+    //withNotify put session
+    >withNotify($notify);
