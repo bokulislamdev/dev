@@ -95,3 +95,7 @@ file path: providers/AppServiceProvider.php
                 $notify[] = ['error', 'Couldn\'t upload your image'];
                 return back()->withNotify($notify);
             }
+            
+            
+      //not duplicate data from table distinct()
+      Transaction::distinct('remark')->get('remark')
