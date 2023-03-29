@@ -99,3 +99,6 @@ file path: providers/AppServiceProvider.php
             
       //not duplicate data from table distinct()
       Transaction::distinct('remark')->get('remark')
+      
+      // date filter 
+      $query->whereDate($column, '>=', $startDate)->whereDate($column, '<=', $endDate);
