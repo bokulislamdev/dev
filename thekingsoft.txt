@@ -84,3 +84,14 @@ file path: providers/AppServiceProvider.php
     
     //withNotify put session
     >withNotify($notify);
+    
+    
+    //try catch
+     try {
+                $old = $user->image;
+                $user->image = fileUploader($request->image, getFilePath('adminProfile'), getFileSize('adminProfile'), $old);
+            } catch (\Exception $exp) {
+               dd($exp->getMessage()); //errors print
+                $notify[] = ['error', 'Couldn\'t upload your image'];
+                return back()->withNotify($notify);
+            }
