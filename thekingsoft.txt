@@ -77,12 +77,6 @@ file path: providers/AppServiceProvider.php
                 modal.find('.withdraw-amount').text($(this).data('amount'));
                 modal.modal('show');
             });
-
-            $('.rejectBtn').on('click', function() {
-                var modal = $('#rejectModal');
-                modal.find('input[name=id]').val($(this).data('id'));
-                modal.modal('show');
-            });
         })(jQuery);
 
     </script>
