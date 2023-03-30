@@ -107,3 +107,6 @@ file path: providers/AppServiceProvider.php
       //laravel components
        resources/views/components/form-generator.blade.php
           <x-form-generator />
+          
+        //validation
+         'host' => 'required_if:email_method,smtp',
