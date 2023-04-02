@@ -15,7 +15,7 @@ filepath: composer.json
 
 
 //methods
-hash_hmac(),scopefunction(),explode(',',$variable),file_get_contents()
+hash_hmac(),scopefunction(),explode(',',$variable),file_get_contents(),whereHas()
 
 //for view share
 file path: providers/AppServiceProvider.php
