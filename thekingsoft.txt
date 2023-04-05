@@ -15,7 +15,7 @@ filepath: composer.json
 
 
 //methods
-hash_hmac(),scopefunction(),explode(',',$variable),file_get_contents(),whereHas(),flip()
+hash_hmac(),scopefunction(),explode(',',$variable),file_get_contents(),whereHas(),flip(),distinct('colum_name')
 file_get_contents(resource_path('views/partials/country.json'))
 
 //jquery
