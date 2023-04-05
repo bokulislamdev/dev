@@ -18,6 +18,9 @@ filepath: composer.json
 hash_hmac(),scopefunction(),explode(',',$variable),file_get_contents(),whereHas(),flip()
 file_get_contents(resource_path('views/partials/country.json'))
 
+//jquery
+closest(),parent()
+
 //for view share
 file path: providers/AppServiceProvider.php
  public function boot()
