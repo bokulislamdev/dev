@@ -15,7 +15,7 @@ filepath: composer.json
 
 
 //methods
-hash_hmac(),scopefunction(),explode(',',$variable),file_get_contents(),whereHas(),flip(),distinct('colum_name'),array_key_exists("Volvo",$a),file_put_contents(),array_merge(),resource_path(),makeDirectory()
+hash_hmac(),scopefunction(),explode(',',$variable),file_get_contents(),whereHas(),flip(),distinct('colum_name'),array_key_exists("Volvo",$a),file_put_contents(),array_merge(),resource_path(),makeDirectory(), Auth::loginUsingId($id)
 file_get_contents(resource_path('views/partials/country.json'))
 
 //jquery
