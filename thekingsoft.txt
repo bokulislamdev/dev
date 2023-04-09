@@ -19,7 +19,7 @@ hash_hmac(),scopefunction(),explode(',',$variable),file_get_contents(),whereHas(
 file_get_contents(resource_path('views/partials/country.json'))
 
 //jquery
-closest(),parent()
+closest(),parent(),form.find('[name=subject]').val();
 
 //for view share
 file path: providers/AppServiceProvider.php
