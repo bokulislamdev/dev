@@ -114,3 +114,31 @@ file path: providers/AppServiceProvider.php
           
         //validation
          'host' => 'required_if:email_method,smtp',
+         
+         
+         
+         //todo list
+         (function($) {
+            "use strict";
+            var fileAdded = 0;
+            $('.addFile').on('click', function() {
+                if (fileAdded >= 10) {
+                    notify('error', 'You\'ve added maximum number of file');
+                    return false;
+                }
+                fileAdded++;
+                $("#fileUploadsContainer").append(`
+                <div class="mb-3">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="basic-addon1">Label 1</span>
+                        <input type="number" class="form-control" placeholder="0.00" aria-label="Username" aria-describedby="basic-addon1">
+                        <button type="button" class="input-group-text btn-danger remove-btn"><i class="las la-times"></i></button>
+                    </div>
+                </div>
+                `)
+            });
+            $(document).on('click', '.remove-btn', function() {
+                fileAdded--;
+                $(this).closest('.input-group').remove();
+            });
+        })(jQuery);
