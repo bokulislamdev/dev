@@ -142,3 +142,9 @@ file path: providers/AppServiceProvider.php
                 $(this).closest('.input-group').remove();
             });
         })(jQuery);
+        
+        
+        //input change
+         $('input[name=amount]').on('input',function(){
+            alert('asdf');
+        });
