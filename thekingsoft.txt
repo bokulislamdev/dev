@@ -148,3 +148,7 @@ file path: providers/AppServiceProvider.php
          $('input[name=amount]').on('input',function(){
             alert('asdf');
         });
+        
+        
+        //
+        request()->routeIs('home')
