@@ -152,3 +152,7 @@ file path: providers/AppServiceProvider.php
         
         //
         request()->routeIs('home')
+        
+        
+        //plagins
+        https://christianbayer.github.io/image-uploader/
