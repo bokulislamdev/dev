@@ -156,3 +156,18 @@ file path: providers/AppServiceProvider.php
         
         //plagins
         https://christianbayer.github.io/image-uploader/
+        
+        
+        {{-- 
+@push('script')
+    <script>
+
+        $(window).on("resize", function() {
+            var width = $(".verification-code").width();
+            var letter_spacing = width / 7.05;
+            $('.verification-code input').css("letter-spacing", letter_spacing + "px");
+        });
+
+    </script>
+@endpush --}}
+
