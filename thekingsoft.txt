@@ -171,3 +171,9 @@ file path: providers/AppServiceProvider.php
     </script>
 @endpush --}}
 
+//vs code 
+IGNITION_EDITOR=vscode
+DEBUGBAR_EDITOR=vscode
+DEBUGBAR_ENABLED=true
+IGNITION_THEME=dark
+
