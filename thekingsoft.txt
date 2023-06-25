@@ -171,6 +171,9 @@ file path: providers/AppServiceProvider.php
     </script>
 @endpush --}}
 
+//create image size
+https://placehold.co/336x280
+
 //vs code 
 IGNITION_EDITOR=vscode
 DEBUGBAR_EDITOR=vscode
