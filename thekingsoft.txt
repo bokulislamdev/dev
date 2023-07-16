@@ -180,3 +180,6 @@ DEBUGBAR_EDITOR=vscode
 DEBUGBAR_ENABLED=true
 IGNITION_THEME=dark
 
+//php method
+strip_tags(),
+
