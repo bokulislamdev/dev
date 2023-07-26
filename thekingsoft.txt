@@ -183,3 +183,19 @@ IGNITION_THEME=dark
 //php method
 strip_tags(),
 
+
+//modal open jquery
+ (function($) {
+        "use strict";
+        $('.loanNow').on('click', function() {
+            var modal = $('#loanModal');
+            var loanAmount = $('select[name=loan_amount]').val();
+            if (!loanAmount) {
+                notify('error', 'Please select loan amount');
+                return true;
+            }
+            modal.find('input[name=amount]').val(loanAmount);
+            modal.modal('show');
+        });
+    })(jQuery);
+
