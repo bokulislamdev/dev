@@ -199,3 +199,20 @@ strip_tags(),
         });
     })(jQuery);
 
+
+//click and copy
+  $('.copyBoard').click(function() {
+      var copyText = document.getElementsByClassName("myUrl");
+      copyText = copyText[0];
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+
+      /*For mobile devices*/
+      document.execCommand("copy");
+      $(this).text('Copied');
+
+      setTimeout(() => {
+          $(this).text('Copy');
+      }, 5000);
+  });
+
