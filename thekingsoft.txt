@@ -216,3 +216,14 @@ strip_tags(),
       }, 5000);
   });
 
+
+//category subcategory
+$('select[name="country"]').on('change', function() {
+    var cities = $(this).find(`option:selected`).data('cities');
+    var option = '';
+    $.each(cities , function(index,value){
+        option += "<option name='city' value='" + value.city + "'>" + value.city + "</option>";
+    })
+    $('select[name=city]').html(option);
+})
+
