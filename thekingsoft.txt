@@ -216,6 +216,22 @@ strip_tags(),
       }, 5000);
   });
 
+//click and paste
+ $('#pasteButton').click(function(e) {
+      handlePaste(e);
+  });
+
+  async function handlePaste(event) {
+      event.preventDefault();
+      try {
+          const pastedText = await navigator.clipboard.readText();
+          $('.input-group').find('input[type=text]').val(pastedText);
+          notify('success', `Paste - ${pastedText}`)
+      } catch (error) {
+          notify('error', `Something was wrong`);
+      }
+  }
+
 
 //category subcategory
 $('select[name="country"]').on('change', function() {
@@ -226,4 +242,5 @@ $('select[name="country"]').on('change', function() {
     })
     $('select[name=city]').html(option);
 })
+
 
