@@ -243,4 +243,7 @@ $('select[name="country"]').on('change', function() {
     $('select[name=city]').html(option);
 })
 
+//package
+laravel-debugbar
+
 
