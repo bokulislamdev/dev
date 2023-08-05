@@ -246,4 +246,9 @@ $('select[name="country"]').on('change', function() {
 //package
 laravel-debugbar
 
+//Select 2 dropdown
+  $('.select2').select2({
+     dropdownParent:$('.position-relative')
+ })
+
 
