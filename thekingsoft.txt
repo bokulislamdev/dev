@@ -251,4 +251,11 @@ laravel-debugbar
      dropdownParent:$('.position-relative')
  })
 
+//offSetExists
+@if (!app()->offsetExists('slick_style'))
+    @push('style-lib')
+        <link href="{{ asset($activeTemplateTrue . '/css/slick.css') }}" rel="stylesheet">
+    @endpush
+    @php app()->offsetSet('slick_style',true) @endphp
+@endif
 
