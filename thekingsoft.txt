@@ -259,3 +259,26 @@ laravel-debugbar
     @php app()->offsetSet('slick_style',true) @endphp
 @endif
 
+//Tree viewe ref
+//for model
+ public $allId=[];
+ public function buildReferralTree($user)
+    {
+        $tree = [
+            'id' => $user->id,
+            'name' => $user->email,
+            'referrals' => [],
+        ];
+        array_push($this->allId,$user->id);
+
+        foreach ($user->referrals as $referral) {
+            $tree['referrals'][] = $this->buildReferralTree($referral);
+        }
+        return $tree;
+    }
+//for controller
+  $user = User::with('referrals')->findOrFail($id);
+  $referralTree = $user->buildReferralTree($user);
+
+  dd($user->allId);
+
