@@ -283,3 +283,7 @@ laravel-debugbar
 
   dd($user->allId);
 
+
+//relation
+$query->whereJsonContains('tag', $request->tag);
+
