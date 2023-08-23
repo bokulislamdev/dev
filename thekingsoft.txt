@@ -291,3 +291,7 @@ $query->whereJsonContains('tag', $request->tag);
    if(true){
        throw ValidationException::withMessages(['Maximum image is '.$plan->images]);
    }
+
+//edit javascript url
+         let url=`{{ route('admin.service.gallery.edit',':id') }}`;
+            modal.find('form').attr('action',url.replace(':id',data.gallery_id));
