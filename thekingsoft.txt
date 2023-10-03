@@ -295,3 +295,23 @@ $query->whereJsonContains('tag', $request->tag);
 //edit javascript url
          let url=`{{ route('admin.service.gallery.edit',':id') }}`;
             modal.find('form').attr('action',url.replace(':id',data.gallery_id));
+
+//image upload and show
+ $(".profilePicUpload").on('change', function() {
+        proPicURL(this);
+    });
+
+    function proPicURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('.showProfilePhoto').prop('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(".remove-image").on('click', function() {
+        $(this).parents(".profileParentImage").find('input[type=file]').val('');
+        $(this).parents(".profileParentImage").find('.showProfilePhoto').prop('src', '');
+    });
