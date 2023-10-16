@@ -315,3 +315,12 @@ $query->whereJsonContains('tag', $request->tag);
         $(this).parents(".profileParentImage").find('input[type=file]').val('');
         $(this).parents(".profileParentImage").find('.showProfilePhoto').prop('src', '');
     });
+
+
+//view render for ajex
+ public function productSearch(Request $request)
+    {
+        $products = Product::searchable(['title'])->active()->get();
+        $html     = view(activeTemplate() . 'partials.products',compact('products'))->render();
+        return response()->json(['success' => true, 'html' => $html]);
+    }
