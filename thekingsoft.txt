@@ -324,3 +324,31 @@ $query->whereJsonContains('tag', $request->tag);
         $html     = view(activeTemplate() . 'partials.products',compact('products'))->render();
         return response()->json(['success' => true, 'html' => $html]);
     }
+
+
+//coocki in javascript
+  $(document).on("click", ".moodOnOff", function() {
+
+                const cookieValue = getCookieValue("mode");
+                if (cookieValue == 'true') {
+                    document.cookie = "mode=false";
+                    window.location.href = window.location.href;
+                } else {
+                    document.cookie = "mode=true";
+                    window.location.href = window.location.href;
+                }
+            });
+
+            function getCookieValue(cookieName) {
+                const name = cookieName + "=";
+                const decodedCookie = decodeURIComponent(document.cookie);
+                const cookieArray = decodedCookie.split(';');
+
+                for (let i = 0; i < cookieArray.length; i++) {
+                    let cookie = cookieArray[i].trim();
+                    if (cookie.indexOf(name) === 0) {
+                        return cookie.substring(name.length, cookie.length);
+                    }
+                }
+                return "";
+            }
