@@ -325,6 +325,30 @@ $query->whereJsonContains('tag', $request->tag);
         return response()->json(['success' => true, 'html' => $html]);
     }
 
+//ajax pagination
+
+ $(document).on('click', '.pagination a', function(e) {
+     e.preventDefault();
+     var page = $(this).attr('href').split('page=')[1];
+     fetchItems(page);
+ });
+
+ function fetchItems(page) {
+     var search = $('.product_search_form').find("[name='search']").val();
+     var order_by = $('.product_search_form').find("[name='order_by']").val();
+
+     $.ajax({
+         data: {
+             search: search,
+             order_by: order_by
+         },
+         url: `{{ route('product.search') }}?page=${page}`,
+         success: function(response) {
+             $('#all-products').html(response.html)
+         }
+     });
+ }
+
 
 //coocki in javascript
   $(document).on("click", ".moodOnOff", function() {
