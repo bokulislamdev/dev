@@ -21,6 +21,7 @@ file_get_contents(resource_path('views/partials/country.json'))
 
 //jquery
 closest(),parent(),form.find('[name=subject]').val();,jquery-sortable->plagin(drag & drop)
+$(this).find("option:selected").data('locals');
 
 //for view share
 file path: providers/AppServiceProvider.php
