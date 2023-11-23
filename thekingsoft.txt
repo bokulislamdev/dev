@@ -381,3 +381,12 @@ $query->whereJsonContains('tag', $request->tag);
                 var expires = "expires=" + date.toUTCString();
                 document.cookie = `${key}=${value};${expires}; path=${path}`;
             }
+
+
+
+//query 2 colum check
+ ->where(function($query){
+            $query->where('pricing_model',2)->orWhere(function($q){
+                $q->where('pricing_model',Status::AUCTION)->whereDate('auction_deadline', '>=', today());
+            });
+        })
