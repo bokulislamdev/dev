@@ -390,3 +390,4 @@ $query->whereJsonContains('tag', $request->tag);
                 $q->where('pricing_model',Status::AUCTION)->whereDate('auction_deadline', '>=', today());
             });
         })
+//orderByRaw('top = 0, top ASC')
