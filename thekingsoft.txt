@@ -391,3 +391,9 @@ $query->whereJsonContains('tag', $request->tag);
             });
         })
 //orderByRaw('top = 0, top ASC')
+
+//array show relation
+ public function scopeGetRiderRules()
+    {
+        return RiderRule::whereIn('id', $this->rider_rule_id ?? []);
+    }
