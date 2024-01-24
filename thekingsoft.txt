@@ -397,3 +397,9 @@ $query->whereJsonContains('tag', $request->tag);
     {
         return RiderRule::whereIn('id', $this->rider_rule_id ?? []);
     }
+
+
+//cu modal select 2
+ $('.select2-basic').select2({
+                dropdownParent:$('#cuModal')
+            })
