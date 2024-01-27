@@ -403,3 +403,11 @@ $query->whereJsonContains('tag', $request->tag);
  $('.select2-basic').select2({
                 dropdownParent:$('#cuModal')
             })
+//select2 for edit
+     $('.editBtn').on('click',function (e) { 
+                var country = $(this).data('country');
+                $('.select2-basic').val(country).trigger('change');
+            });
+            $('.addBtn').on('click',function (e) { 
+                $('.select2-basic').val('').trigger('change');
+            });
