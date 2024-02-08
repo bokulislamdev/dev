@@ -411,3 +411,25 @@ $query->whereJsonContains('tag', $request->tag);
             $('.addBtn').on('click',function (e) { 
                 $('.select2-basic').val('').trigger('change');
             });
+
+
+//multiple image cumodal
+   //blade
+   @php
+    $image_with_path = [];
+    $image_with_path[0] = getImage(getFilePath('fileType') . '/' . $fileType->image, getFileSize('fileType'));
+    $image_with_path[1] = getImage(getFilePath('fileTypeCollection') . '/' . $fileType->collection_image, getFileSize('fileTypeCollection'));
+    $fileType->image_with_path = $image_with_path;
+    @endphp
+
+  //cumodal
+if (resource.image_with_path) {
+   if ($.isArray(resource.image_with_path)) {
+       let imageUploadPreview = cuModal.find(".image-upload-preview");
+        $.each(imageUploadPreview, function (i, e) {
+        $(e).css("background-image", `url(${resource.image_with_path[i]})`);
+    });
+     } else {
+        cuModal.find(".image-upload-preview").css("background-image", `url(${resource.image_with_path})`);
+       }
+        }
