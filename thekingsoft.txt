@@ -433,3 +433,7 @@ if (resource.image_with_path) {
         cuModal.find(".image-upload-preview").css("background-image", `url(${resource.image_with_path})`);
        }
         }
+
+
+//replace js
+   let videoLink = (`{{ asset(getFilePath('fileTypeVideo') . '/' . ':video') }}`).replace(":video", video);
