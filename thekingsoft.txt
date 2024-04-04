@@ -441,3 +441,10 @@ winscp
 
 //replace js
    let videoLink = (`{{ asset(getFilePath('fileTypeVideo') . '/' . ':video') }}`).replace(":video", video);
+
+
+//github compire file 
+git add .
+git commit -m "immediate"
+git archive --output=modified_and_added_files.zip HEAD -- $(git diff --name-only --diff-filter=AM HEAD~1..HEAD)
+
