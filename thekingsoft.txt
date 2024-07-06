@@ -454,3 +454,10 @@ git reset HEAD~1
 //for textarea
 <p>@php echo nl2br($message->message) @endphp</p>
 
+//select data
+ @foreach ($gatewayCurrency as $item)
+    <option data-gateway='@json($item)' value="{{ $item->id }}">{{ $item->name }}</option>
+@endforeach
+
+  var methodCode = $(this).find('option:selected').data('gateway');
+
