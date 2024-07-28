@@ -461,3 +461,10 @@ git reset HEAD~1
 
   var methodCode = $(this).find('option:selected').data('gateway');
 
+
+//sql
+SET  @num := 0;
+UPDATE notification_templates SET id = @num := (@num+1);
+ALTER TABLE notification_templates AUTO_INCREMENT =1;
+
+
