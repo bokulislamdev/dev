@@ -468,3 +468,37 @@ UPDATE notification_templates SET id = @num := (@num+1);
 ALTER TABLE notification_templates AUTO_INCREMENT =1;
 
 
+//input value jquery
+let accountInformation = @json($accountListing->account_info);
+                $(accountInformation).each(function(index, information) {
+                    let name = removeSpecialCharacters(titleToKey(information.name));
+                    let targetElement = $(`[name=${name}]`);
+                    let type = information.type;
+                    if (type == 'file') return;
+                    if (type == 'select') targetElement.val(information.value).change();
+                    if (type == 'text' || type == 'url' || type == 'time' || type == 'datetime') targetElement.val(information.value);
+                    if (type == 'textarea') targetElement.text(information.value);
+                    if (type == 'checkbox') {
+                        if (typeof information.value == 'string') {
+                            targetElement.val(information.value);
+                            targetElement.prop('checked', true);
+                        } else {
+                            let value = Array.from(information.value);
+                            targetElement = $(`[name='${name}[]']`);
+                            $(targetElement).each(function(index, ele) {
+                                if (value.indexOf(ele.value) != -1) {
+                                    $(ele).prop('checked', true)
+                                }
+                            });
+                        }
+                    }
+                    if (information.type == 'radio') {
+                        $(targetElement).each(function(index, elem) {
+                            if (elem.value == information.value) {
+                                $(elem).prop('checked', true)
+                            }
+                        });
+                    }
+                });
+
+
