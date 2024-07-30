@@ -502,3 +502,14 @@ let accountInformation = @json($accountListing->account_info);
                 });
 
 
+//modal data show in blade
+$('.detailBtn').on('click', function() {
+                let modal = $('#detailModal');
+                let invest = $(this).data('invest');
+                let html = '';
+                html = `@include($activeTemplate . 'partials.invest_detail_modal', ['invest' => $invest])`;
+                modal.find('.userData').html(html);
+                modal.modal('show');
+            });
+
+
