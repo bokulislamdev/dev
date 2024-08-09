@@ -515,3 +515,4 @@ $('.detailBtn').on('click', function() {
 
 //css
 .form--control[type="file"]::file-selector-button 
+.object-fit
