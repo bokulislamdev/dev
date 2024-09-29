@@ -182,6 +182,9 @@ DEBUGBAR_EDITOR=vscode
 DEBUGBAR_ENABLED=true
 IGNITION_THEME=dark
 
+//vs full line
+ctrl+, than. wrap Word #Wrap Column=120 #Wrap Line Length=1000000...
+
 //php method
 strip_tags(),
 
