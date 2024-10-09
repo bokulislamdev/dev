@@ -526,3 +526,4 @@ $('.detailBtn').on('click', function() {
 //language select
 shift+home
 shift + right array
+=GOOGLETRANSLATE(A1, "en", "ar")
