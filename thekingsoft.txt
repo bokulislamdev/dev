@@ -522,3 +522,7 @@ $('.detailBtn').on('click', function() {
 
 //clone/copy
 (clone $categoryList)->count();
+
+//language select
+shift+home
+shift + right array
