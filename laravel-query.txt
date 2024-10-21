@@ -1,1 +1,5 @@
-
+$transactions = Transaction::where('user_id', auth()->id())->filter(['trx_type'])->dateFilter()->filterable()->orderBy('id', 'desc')
+            ->selectRaw("
+                SUM(CASE WHEN trx_type = '+' THEN amount ELSE 0 END) as plusAmount,
+                SUM(CASE WHEN trx_type = '-' THEN amount ELSE 0 END) as minusAmount
+            ")->get();
