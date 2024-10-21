@@ -3,3 +3,15 @@ $transactions = Transaction::where('user_id', auth()->id())->filter(['trx_type']
                 SUM(CASE WHEN trx_type = '+' THEN amount ELSE 0 END) as plusAmount,
                 SUM(CASE WHEN trx_type = '-' THEN amount ELSE 0 END) as minusAmount
             ")->get();
+
+
+
+
+
+  $staffs = BranchStaff::selectRaw('branch_staff.*,
+            CASE WHEN branch_staff.status = 0 THEN "Banned" ELSE "ACTIVE" END AS status_text,
+            CASE WHEN branch_staff.designation = 0 THEN "Account Officer" ELSE "Branch Manager" END AS designation_name,
+            GROUP_CONCAT(branches.name SEPARATOR ", ") AS branch_names')
+        ->leftJoin('assign_branch_staff', 'branch_staff.id', '=', 'assign_branch_staff.staff_id')
+        ->join('branches', 'assign_branch_staff.branch_id', '=', 'branches.id')
+        ->groupBy('branch_staff.id');
