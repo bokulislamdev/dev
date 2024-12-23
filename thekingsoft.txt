@@ -533,3 +533,11 @@ alt + f3 (all select)
 
 
 data-resource='@json($invoice->invoiceItem)'
+
+
+learn query
+---------------
+addSelect,
+selectRaw,
+from,
+join
