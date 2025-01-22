@@ -534,6 +534,7 @@ alt + f3 (all select)
 
 data-resource='@json($invoice->invoiceItem)'
 
+Skeleton
 
 learn query
 ---------------
