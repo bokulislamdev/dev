@@ -542,3 +542,25 @@ addSelect,
 selectRaw,
 from,
 join
+
+
+
+
+//taknic
+
+if ($hasImages) {
+            $images    = [];
+
+            foreach ($hasImages as $file) {
+                try {
+                    $name                      = fileUploader($file, $path);
+                    $image                     = new ProductReviewImage();
+                    $image->product_review_id = $review->id;
+                    $image->image               = $name;
+                    $images[]                  = $image;
+                } catch (\Exception $exp) {
+                    return false;
+                }
+            }
+            $review->productReviewImage()->saveMany($images);
+        }
