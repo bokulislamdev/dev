@@ -543,6 +543,8 @@ selectRaw,
 from,
 join
 
+selectRaw("SUM(amount) as amount, DATE_FORMAT(created_at, '%Y-%M') as date")->groupBy('date')->get();
+
 
 
 
