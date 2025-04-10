@@ -592,3 +592,39 @@ if ($hasImages) {
             }
             $review->productReviewImage()->saveMany($images);
         }
+
+//login mobile number
+protected function attemptLogin(Request $request)
+    {
+        if ($this->username ==  "mobile_number") {
+            $user = User::whereRaw("CONCAT(dial_code, mobile) = ?", [$request->mobile_number])->first();
+            if ($user) {
+                $credentials = [
+                    'mobile' => $user->mobile,
+                    'password' => $request->password
+                ];
+                return $this->guard()->attempt(
+                    $credentials,
+                    $request->boolean('remember')
+                );
+            }
+        } else {
+            return $this->guard()->attempt(
+                $this->credentials($request),
+                $request->boolean('remember')
+            );
+        }
+    }
+
+public function findUsername()
+    {
+        $login = request()->input('username');
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        
+        if ($fieldType == 'username' && is_numeric($login)) {
+            $fieldType = 'mobile_number';
+        }
+
+        request()->merge([$fieldType => $login]);
+        return $fieldType;
+    }
