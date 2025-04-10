@@ -256,6 +256,32 @@ laravel-debugbar
      dropdownParent:$('.position-relative')
  })
 
+//show image select2
+function formatState(state) {
+            if (!state.id) {
+                return state.text;
+            }
+            var $state = $(
+                '<span class="img-flag-inner"><img src="' + $(state.element).attr('data-src') + '" class="bank-image" /> ' + state.text + '</span>'
+            );
+            return $state;
+        };
+        $('.img-select2').select2({
+            templateResult: formatState,
+            templateSelection: formatState
+        });
+
+//blade
+<select class="form-control img-select2" data-minimum-results-for-search="-1">
+                                <option value='bn' data-src="https://flagcdn.com/w40/bd.png">
+                                    bangladesh</option>
+                                <option value='ur' data-src="https://flagcdn.com/w40/pk.png">
+                                    Pakistan</option>
+                                <option value='en' data-src="https://flagcdn.com/w40/us.png">
+                                    United Stated
+                                </option>
+                            </select>
+
 //offSetExists
 @if (!app()->offsetExists('slick_style'))
     @push('style-lib')
