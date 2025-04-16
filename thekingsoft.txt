@@ -628,3 +628,16 @@ public function findUsername()
         request()->merge([$fieldType => $login]);
         return $fieldType;
     }
+
+
+//daterangepicker single 
+    $('[name="date"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 2020,
+                maxYear: parseInt(moment().format('YYYY'), 10),
+                minDate: moment(),
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
