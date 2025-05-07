@@ -615,7 +615,7 @@ protected function attemptLogin(Request $request)
             );
         }
     }
-
+FBVNFwNLdTSOI5b
 public function findUsername()
     {
         $login = request()->input('username');
@@ -629,7 +629,7 @@ public function findUsername()
         return $fieldType;
     }
 
-
+vlabscript
 //daterangepicker single 
     $('[name="date"]').daterangepicker({
                 singleDatePicker: true,
