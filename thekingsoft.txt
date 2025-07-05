@@ -646,3 +646,23 @@ vlabscript
 
 
 https://github.com/PHP-FFMpeg/PHP-FFMpeg
+
+//text heighlight
+
+ <h1 class="banner-content__title highlight" data-length="2">{{ __(@$banner->data_values->heading) }}</h1>
+
+ $(window).on('load', function(e) {
+                let hightlightContent = $('.highlight');
+                let content = hightlightContent.text();
+                let splitContent = content.split(' ');
+                let length = hightlightContent.data('length');
+                let htmlContent = ``;
+                for (let i = 0; i < splitContent.length; i++) {
+                    if (i === (length - 1)) {
+                        htmlContent += ' ' + `<span class="text--base px-1">${splitContent[i]}</span>`
+                    } else {
+                        htmlContent += ' ' + splitContent[i];
+                    }
+                }
+                hightlightContent.html(htmlContent);
+            });
